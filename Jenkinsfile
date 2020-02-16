@@ -36,6 +36,16 @@ pipeline{
 				}
 			}
 		}
+		stage('Packages')
+		{
+			steps
+			{
+			withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') 
+				{
+					sh 'mvn packages'
+				}
+			}
+		}
 			
 	}
 }
