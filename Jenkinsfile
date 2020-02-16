@@ -20,8 +20,10 @@ pipeline{
 		{
 			steps
 			{
-				withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') {
-				sh 'mvn compile'
+				withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') 
+				{
+					sh 'mvn compile'
+				}
 			}
 		}
 			
