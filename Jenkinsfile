@@ -16,6 +16,14 @@ pipeline{
 				}
 			}
 		}
+		stage('compile code')
+		{
+			steps
+			{
+				withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') {
+				sh 'mvn compile'
+			}
+		}
 			
 	}
 }
