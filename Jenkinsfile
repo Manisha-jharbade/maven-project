@@ -5,7 +5,7 @@ pipeline{
 		{
 				steps
 				{
-					branch: 'master', 'git: "https://github.com/Manisha-jharbade/maven-project"
+					git branch: 'master', url: 'https://github.com/Manisha-jharbade/maven-project'
 				}
 		}
 		stage('validate code')
@@ -13,7 +13,7 @@ pipeline{
 			steps{
 				withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') {
 				sh 'mvn validate'
-			}
+				}
 			}
 		}
 			
