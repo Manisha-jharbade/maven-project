@@ -26,6 +26,16 @@ pipeline{
 				}
 			}
 		}
+		stage('Test')
+		{
+			steps
+			{
+				withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') 
+				{
+					sh 'mvn test'
+				}
+			}
+		}
 			
 	}
 }
