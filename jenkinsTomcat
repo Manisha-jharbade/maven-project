@@ -1,0 +1,24 @@
+pipeline{
+	agent any
+	stages{
+		stage('scm checkout')
+		{
+				steps
+				{
+					git branch: 'master', url: 'https://github.com/Manisha-jharbade/maven-project'
+				}
+		}
+		stage('Deploy to tomcat')
+		{
+			steps{
+				sshagent(['ec2-user-cicd']) {
+						sh 'ssh -o StrictHostKeyChecking=no **/*.war ec2-user@172.31.83.233:/user//share/tomcat/conf'
+				}
+			}
+			
+		}		
+	}
+}
+
+
+
