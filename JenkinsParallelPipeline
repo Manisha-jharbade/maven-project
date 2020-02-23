@@ -1,0 +1,22 @@
+pipeline{
+	agent any
+	
+	stages{
+		parallel {
+			stage('Deploy to windows')
+			{
+					steps
+					{
+						echo 'build and deploy in window'
+					}
+			}
+			stage('Deploy to VM')
+			{
+				steps{
+						echo 'build and deploy in VM'
+					}
+				}
+			}
+		}
+	}
+}	
