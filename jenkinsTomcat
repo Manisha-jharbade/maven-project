@@ -23,7 +23,7 @@ pipeline{
 		{
 			steps{
 				sshagent(['ec2-user-cicd']) {
-						sh 'ssh -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.83.233:/manager/html'
+						sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.83.233:/manager/html'
 				}
 			}
 			
