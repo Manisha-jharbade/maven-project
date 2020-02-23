@@ -8,6 +8,16 @@ pipeline{
 					git branch: 'master', url: 'https://github.com/Manisha-jharbade/maven-project'
 				}
 		}
+		stage('Packeging')
+		{
+				steps
+			{
+				withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') 
+				{
+					sh 'mvn packages'
+				}
+			}
+		}
 		stage('Deploy to tomcat')
 		{
 			steps{
