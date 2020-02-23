@@ -1,6 +1,7 @@
 pipeline{
 	agent any
 	stages{
+	stage('Deploy')
 		parallel {
 			stage('Deploy to windows')
 			{
@@ -15,6 +16,7 @@ pipeline{
 						echo 'build and deploy in VM'
 					}
 			}
+		}
 		}
 	}
 }	
