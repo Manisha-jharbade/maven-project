@@ -1,18 +1,18 @@
 pipeline {
 	Agent any
-	Stages
+	stages
 	{
-		Stage(parallel statge)
+		stage('parallel statge')
 		{
 			parallel
 			{
-				stage(test)
+				stage('test')
 				{
 					Step{
 						echo 'test'
 					}
 				}
-				stage(packages)
+				stage('packages')
 				{
 					step
 					{
