@@ -1,38 +1,26 @@
-pipeline{
-	agent any
-	stages{
-		stage('scm checkout')
+pipeline {
+	Agent any
+	Stages
+	{
+		Stage(parallel statge)
+		{
+			parallel
 			{
-					steps
-					{
-						git branch: 'master', url: 'https://github.com/Manisha-jharbade/maven-project'
-					}
-			}
-		stage('Parallel stage'){
-			parallel {
-				stage('Test')
+				stage(test)
 				{
-					steps
-					{
-						withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') 
-						{
-							sh 'mvn test'
-						}
+					Step{
+						echo 'test'
 					}
 				}
-				stage('Packeging')
+				stage(packages)
 				{
-						steps
+					step
 					{
-						withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') 
-						{
-							sh 'mvn package'
-						}
+						ech 'package'
 					}
 				}
 			}
-			
+			failFast:true
 		}
-		failFast:true
 	}
-}	
+}
