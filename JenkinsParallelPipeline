@@ -2,25 +2,24 @@ pipeline {
 	agent any
 	stages
 	{
-		stage('parallel statge')
-		{
-			parallel
-			{
-				stage('test')
+		stage('Parallel stage'){
+			parallel {
+				stage('Test')
 				{
-					Step{
+					steps
+					{
 						echo 'test'
 					}
 				}
-				stage('packages')
+				stage('Packeging')
 				{
-					step
+						steps
 					{
-						ech 'package'
+						echo 'package'
 					}
 				}
 			}
-			failFast:true
+			
 		}
 	}
 }
