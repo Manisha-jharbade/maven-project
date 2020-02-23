@@ -23,7 +23,7 @@ pipeline{
 		{
 			steps{
 				sshagent(['ec2-user-cicd']) {
-						sh 'scp -o StrictHostKeyChecking=no var/lib/jenkins/workspace/Build-Deploy-Job/webapp/target/webapp.war ec2-user@172.31.83.233:/var/lib/tomcat/webapps/'
+						sh 'scp -o StrictHostKeyChecking=no var/lib/jenkins/workspace/Pipeline-Tomcat/webapp/target/webapp.war ec2-user@172.31.83.233:/var/lib/tomcat/webapps/'
 				}
 			}
 			
