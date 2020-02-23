@@ -1,22 +1,36 @@
 pipeline{
 	agent any
 	stages{
-	stage('Parallel stage'){
-		parallel {
-			stage('Deploy to windows')
+		stage('scm checkout')
 			{
 					steps
 					{
-						echo 'build and deploy in window'
+						git branch: 'master', url: 'https://github.com/Manisha-jharbade/maven-project'
 					}
 			}
-			stage('Deploy to VM')
-			{
-				steps{
-						echo 'build and deploy in VM'
+		stage('Parallel stage'){
+			parallel {
+				stage('Test')
+				{
+					steps
+					{
+						withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') 
+						{
+							sh 'mvn test'
+						}
 					}
+				}
+				stage('Packeging')
+				{
+						steps
+					{
+						withMaven(jdk: 'localJDK-1.8', maven: 'localmaven') 
+						{
+							sh 'mvn packages'
+						}
+					}
+				}
 			}
-		}
 		}
 	}
 }	
